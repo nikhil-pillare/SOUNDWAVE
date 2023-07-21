@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.img-wrapper {
+  overflow: hidden;
+}
+
+img.hover-zoom {
+  transition: all 0.3s ease 0s;
+  width: 100%;
+}
+img.hover-zoom:hover {
+  transform: scale(1.25);
+}
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  
+  }
+  
+  .hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: 
+  #003d29;
+  
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  }
+  .hover-underline-animation:hover{
+  color: black;
+  }
+  .hover-underline-animation:hover:after {
+  
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  }
+
