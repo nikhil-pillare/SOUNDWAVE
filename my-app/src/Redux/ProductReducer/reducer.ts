@@ -1,10 +1,11 @@
 export interface singleProduct {
     id: number,
-    brand: string,
-    type: string,
-    price: number,
-    image: string,
+    name: string,
+    price: string,
+    cartImage: string,
     description: string,
+    rating: number,
+    brand:string
     
     
   }
