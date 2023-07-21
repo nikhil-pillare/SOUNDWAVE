@@ -34,7 +34,9 @@ const customTheme = extendTheme({
     },
   },
 });
+// console.log(store.getState())
 root.render(
+  
   <Provider store={store}>
     <BrowserRouter>
     <ChakraProvider theme={customTheme}>
