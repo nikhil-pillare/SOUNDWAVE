@@ -16,7 +16,6 @@ import {
     InputRightElement,
     Image,
     Divider,
-    Heading,
     SimpleGrid
   } from "@chakra-ui/react";
   
@@ -24,7 +23,6 @@ import {
     HamburgerIcon,
     CloseIcon,
     ChevronDownIcon,
-    ChevronRightIcon,
     StarIcon
   } from "@chakra-ui/icons";
   import {
@@ -32,10 +30,6 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
   } from '@chakra-ui/react'
   import {
     Input,
@@ -47,8 +41,9 @@ import {
   import axios, { AxiosResponse } from 'axios'
   import { useEffect, useState } from "react"
 import { useDebounce } from "../../hooks/useDebounce";
-import { useSearchParams } from "react-router-dom";
- 
+import { useLocation, useSearchParams } from "react-router-dom";
+import { shallowEqual, useSelector } from "react-redux";
+ import { Link as PathLink } from "react-router-dom";
   
   interface APIobj{
     id: number;
@@ -79,12 +74,19 @@ import { useSearchParams } from "react-router-dom";
   }
   export default function NavBar() {
     const [searchParams,setSearchParams]=useSearchParams()
-  
+    const location = useLocation()
+    
     const { isOpen, onToggle } = useDisclosure();
     const [inp, setInp] = useState(searchParams.get("search")|| "");
     const [data, setData] = useState([]);
     const debounce=useDebounce()
 
+    const {isAuth,userData}=useSelector((store:any)=>{return {
+      isAuth:store.authReducer.isAuth,
+      userData:store.authReducer.userData
+    }},shallowEqual)
+
+    // console.log(isAuth,userData)
     useEffect(()=>{
       const paramobj:{search?:string}={
         
@@ -188,7 +190,7 @@ import { useSearchParams } from "react-router-dom";
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} alignItems={"center"}>
 
-           <Image display={{ base: "none", md: "flex" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689890474/soundWave_giofy0.png"/>
+           <Image display={{ base: "none", md: "flex" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/>
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
             </Flex>
@@ -284,9 +286,16 @@ import { useSearchParams } from "react-router-dom";
           <Flex alignItems={"center"} gap={3}>
           <MdAccountCircle/>
           <Link _hover={{textDecoration:"none"}} className="hover-underline-animation">
-            <Text >
+            {isAuth? <Text>
               Account
+            </Text>: 
+            <PathLink state={location.pathname} replace={true} to={"/userlogin"}>
+            <Text>
+              Login
             </Text>
+            </PathLink>
+            }
+            
             </Link>
             </Flex>
             <Flex alignItems={"center"} gap={3}>

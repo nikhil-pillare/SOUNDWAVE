@@ -3,6 +3,8 @@ import Landing from "./Landing/Landing";
 import { ProductPage } from "./Product/ProductPage";
 import { AdminLogin } from "./Admin/AdminLogin";
 import { AdminSide } from "./Admin/Adminside";
+import Login from "./Login/Login";
+import SignUpForm from "./SignUp/SignUp";
 
 export default function MainRoutes(){
     return (
@@ -11,6 +13,8 @@ export default function MainRoutes(){
         <Route path="/products" element={<ProductPage/>}></Route>
         <Route path='/admin' element={<AdminSide/>} />
    <Route path='/login' element={<AdminLogin />} />
+   <Route path="/userlogin" element={<Login/>}/>
+   <Route path="/signup" element={<SignUpForm/>}/>
     </Routes>
     )
 }
