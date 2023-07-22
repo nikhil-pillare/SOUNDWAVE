@@ -1,12 +1,14 @@
+import { Clear_Error, Logout_Success } from "./apiType"
 
  export type State={
     isLoading:boolean,
     isError:boolean,
     isAuth:boolean,
-    userData:[]
+    userData:[],
+    errorMessage:string
 }
 
-export type user={
+export interface user{
     name?:string,
     email:string,
     password:string
@@ -16,7 +18,8 @@ const initialState:State={
     isLoading:false,
     isError:false,
     isAuth:false,
-    userData:[]
+    userData:[],
+    errorMessage:""
 }
 
 export type Action={
@@ -35,7 +38,11 @@ export type Action={
             case "Signup_Success":
                 return {...state,isLoading:false,isAuth:true,userData:payload}
             case "Login_Failure":
-                return {...state,isError:true}
+                return {...state,isError:true, errorMessage:payload}
+                case Logout_Success:
+                    return {...state,isAuth:false,userData:[]}
+            case Clear_Error: 
+            return {...state, errorMessage:""}
             default:
                 return state;
         }

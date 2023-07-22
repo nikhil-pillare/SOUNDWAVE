@@ -7,12 +7,17 @@ import {
     Stack,
     Text,
     VisuallyHidden,
-    useColorModeValue,
     Heading,
     Image,
-    Button
+    Button,
+    Flex,
+    VStack
   } from "@chakra-ui/react";
   import { ReactNode } from "react";
+  import { Link as PathLink, useLocation } from "react-router-dom";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { disType } from "../../Redux/ProductReducer/action";
+import { Logout_Success } from "../../Redux/AuthReducer/apiType";
 ;
   
   const Logo = (props: any) => {
@@ -71,6 +76,18 @@ import {
   };
   
   export default function Footer() {
+    const location = useLocation()
+    const dispatch:disType=useDispatch()
+   
+    const {isAuth,userData}=useSelector((store:any)=>{return {
+      isAuth:store.authReducer.isAuth,
+      userData:store.authReducer.userData
+    }},shallowEqual)
+
+    const handleClick=()=>{
+      //dispatch logout---> is auth false
+      dispatch({type:Logout_Success})
+    }
     return (
       <Box
         bg={"white"}
@@ -83,7 +100,7 @@ import {
           >
             <Stack spacing={6}>
               <Box>
-                <Image src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689890474/soundWave_giofy0.png"/>
+                <Image width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/>
               </Box>
               <Text fontSize={"sm"} textAlign={"left"}>
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
@@ -116,9 +133,26 @@ import {
                   <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1f55dc68c5ee83d0cbf8_GooglePay.png" />
                 </SocialButton>
               </SimpleGrid>
-              <Button>Login</Button>
-              <Button>Sign Up</Button>
-              <Button>Admin</Button>
+              <Flex gap={2} direction={"column"} textAlign={"left"} justifyContent={"flex-start"}>
+              {isAuth?
+<>
+                <Button onClick={handleClick} width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Logout</Button>
+            <PathLink to={"/login"}> <Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink> 
+            </>
+            :
+              <>
+
+               <PathLink to={"/userlogin"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Login</Button></PathLink>
+              <PathLink to={"/signup"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Sign Up</Button></PathLink>
+            
+              <PathLink to={"/login"}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink>
+              </>
+
+              }
+              </Flex>
+              {/* <Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Login</Button>
+              <Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Sign Up</Button> */}
+             
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Department</ListHeader>
