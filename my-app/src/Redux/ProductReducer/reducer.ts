@@ -1,3 +1,10 @@
+interface Color {
+    id: number;
+    label: string;
+    name: string;
+    image: string;
+  }
+
 export interface singleProduct {
     id: number,
     name: string,
@@ -5,8 +12,8 @@ export interface singleProduct {
     cartImage: string,
     description: string,
     rating: number,
-    brand:string
-    
+    brand:string,
+    colors:Color[]
     
   }
 
