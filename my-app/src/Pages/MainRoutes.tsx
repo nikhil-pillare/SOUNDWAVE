@@ -5,6 +5,7 @@ import { AdminLogin } from "./Admin/AdminLogin";
 import { AdminSide } from "./Admin/Adminside";
 import Login from "./Login/Login";
 import SignUpForm from "./SignUp/SignUp";
+import { SingleProductPage } from "./Product/SingleProductPage";
 
 export default function MainRoutes(){
     return (
@@ -15,6 +16,7 @@ export default function MainRoutes(){
    <Route path='/login' element={<AdminLogin />} />
    <Route path="/userlogin" element={<Login/>}/>
    <Route path="/signup" element={<SignUpForm/>}/>
+   <Route path="/products/:id" element={<SingleProductPage/>}></Route>
     </Routes>
     )
 }
