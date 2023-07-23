@@ -9,25 +9,53 @@ import {
   } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_TOTAL_AMOUNT } from '../../Redux/actions_types'
+import { ADD_TO_CART, SET_TOTAL_AMOUNT } from '../../Redux/actions_types'
 import { Cart_item, Cart_state } from '../../Redux/Cart_redux/Types'
 import { store } from '../../Redux/store'
 //import { store } from '../Redux/store'
 import { CartItem } from '../../Components/Cart/CartItem'
 import { CartOrderSummary } from './CartOrderSummary'
 import {Link as PathLink} from 'react-router-dom'
-
-
-
-  function MainPage(){
+import { Get_produts } from '../../Redux/Cart_redux/action'
+import axios from 'axios'
+  function MainPage()
+  {
     //const products:[] = []
-    const products :Cart_item[] = useSelector((store:any)=>store.cartReducer.cart)
+    const test :Cart_item[] = useSelector((store:any)=>store.cartReducer.cart)
+    let products:Cart_item[] = []
     const amount : number = useSelector((store:any)=>store.cartReducer.total_amount)
     const dispatch = useDispatch()
-    useEffect(()=>{
-      dispatch({type:SET_TOTAL_AMOUNT})
-    },[])
+
     console.log(amount);
+    
+
+    useEffect(()=>{
+
+      axios.get(`https://nippy-flavour-backend.bhishree18.repl.co/cart`)
+        .then((res)=>{
+
+            let total = res.data
+            for(let i = 0 ;i<total.length;i++){
+              console.log(total[i]);
+              
+              dispatch({type:ADD_TO_CART,item:total[i]})
+              
+
+            }
+
+            dispatch({type:SET_TOTAL_AMOUNT})
+
+            
+        })
+        .catch((error)=>{
+
+            console.log(error);
+            
+        })
+        
+
+    },[])
+    //console.log(amount);
     ////////QUANTITY HANDLER/////////////
     
     /////////////////////
@@ -45,11 +73,13 @@ import {Link as PathLink} from 'react-router-dom'
         >
           <Stack spacing={{ base: '8', md: '10' }} flex="2">
             <Heading fontSize="2xl" fontWeight="extrabold">
-              Shopping Cart ({products.length} items)
+              Shopping Cart ({test.length} items)
             </Heading>
     
             <Stack spacing="6">
-              {products.map((item) => (
+              {test.length>0 && test.map((item) => (
+                
+                
                 <CartItem key={item.id} {...item} />
               ))}
             </Stack>
