@@ -121,9 +121,10 @@ import { shallowEqual, useSelector } from "react-redux";
       }
       // Open the menu when the input value is not empty
       ;
-      debounce(e,fetchData,3000)
+      debounce(e,fetchData,500)
       
     };
+  
   
     return (
       <>
@@ -162,7 +163,7 @@ import { shallowEqual, useSelector } from "react-redux";
 </Menu>
         </Flex>
       </Flex>
-      <Box padding={1} paddingLeft={10} paddingRight={10}>
+      <Box padding={1} paddingLeft={{base:0, sm:5, md:10}} paddingRight={{base:0, sm:5, md:10}}  boxShadow="0 2px 4px 0 rgba(0, 0, 0, 0.1)">
         <Flex
           bg={"white"}
           color={"black"}
@@ -173,6 +174,7 @@ import { shallowEqual, useSelector } from "react-redux";
           borderColor={useColorModeValue("gray.200", "gray.900")}
           align={"center"}
         >
+          <PathLink to={"/"}><Image display={{ base: "inline", md:"inline" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/></PathLink> 
           <Flex
             flex={{ base: 1, md: "auto" }}
             ml={{ base: -2 }}
@@ -188,94 +190,99 @@ import { shallowEqual, useSelector } from "react-redux";
               aria-label={"Toggle Navigation"}
             />
           </Flex>
+          
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} alignItems={"center"}>
 
-          <PathLink to={"/"}><Image display={{ base: "none", md: "flex" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/></PathLink> 
-            <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          
+            <Flex display={{ base: "none", md: "flex" }}>
               <DesktopNav />
             </Flex>
           </Flex>
-          <Flex
-            direction={"column"}
-            mr={"300px"}
-            width={"25%"}
-            display={{ base: "none", sm: "none", md: "flex" }}
-            align={"center"}
-            justify={"center"}
-          >
-            <InputGroup width={"100%"} size="sm">
-              <InputRightElement
-                pointerEvents="none"
-                children={<Search2Icon color="gray.600" />}
-              />
-              <Input
-                type="text"
-                placeholder="Search..."
-                border="1px solid #949494"
-                borderRadius="10px"
-                value={inp}
-                onChange={handleInputChange}
-              />
-            </InputGroup>
-            {data.length > 0 && (
-              <Flex
-                direction={"column"}
-                width={"600px"}
-                bg={"white"}
-                maxHeight={"400px"}
-                overflowY={"scroll"}
-                pos={"absolute"}
-                zIndex={3}
-                mt={"480px"}
-                borderRadius={"5px"}
-                
-              >
-                {data.map((ele:APIobj, ind) => (
-                  <>
-                    <Flex
-                      key={ind}
-                      width={"100%"}
-                      justifyContent={"space-between"}
-                      padding={5}
-                      alignItems={"center"}
-                      color={"black"}
-                      height={"100px"}
-                    >
-                      <Image
-                        align={"center"}
-                        width={"50px"}
-                        height={"50px"}
-                        src={ele.cartImage}
-                        bg={"#f5f6f6"}
-                      />
-                     <Box width={"40%"}>
-                      <Text align={"left"}>{ele.name}</Text>
-                      </Box>
-                      <Box mt={-2} alignItems="center" alignSelf={"center"}>
-                  {Array(5)
-                    .fill("")
-                    .map((_, i) => (
-                      <StarIcon
-                        key={i}
-                        width={"13px"}
-                        color={i < ele.rating ? "#08ac0a" : "grey"}
-                      />
-                    ))}
-                  <Box as="span" ml="2" color="black" fontSize="sm">
-                    ({121})
-                  </Box>
+          {location.pathname ==="/cart" || location.pathname==="/payment" ? <></>
+          :          <Flex
+          direction={"column"}
+          mr={{base:"0",sm:"0",md:"0",lg:"300px"}}
+          width={"25%"}
+          display={{ base: "none", sm: "none", md: "flex" }}
+          align={"center"}
+          justify={"center"}
+        >          
+        <InputGroup width={"100%"} size="sm">
+            <InputRightElement
+              pointerEvents="none"
+              children={<Search2Icon color="gray.600" />}
+            />
+            <Input
+              type="text"
+              placeholder="Search..."
+              border="1px solid #949494"
+              borderRadius="10px"
+              value={inp}
+              onChange={handleInputChange}
+            />
+          </InputGroup>
+          {data.length > 0 && (
+            <Flex
+              direction={"column"}
+              width={"600px"}
+              mr={{base:0, sm:0,md:0,lg:"-250px"}}
+              bg={"white"}
+              maxHeight={"400px"}
+              overflowY={"scroll"}
+              pos={"absolute"}
+              zIndex={3}
+              mt={"480px"}
+              borderRadius={"5px"}
+              
+            >
+              {data.map((ele:APIobj, ind) => (
+                <>
+                  <Flex
+                    key={ind}
+                    width={"100%"}
+                    justifyContent={"space-between"}
+                    padding={5}
+                    alignItems={"center"}
+                    color={"black"}
+                    height={"100px"}
+                  >
+                    <Image
+                      align={"center"}
+                      width={"50px"}
+                      height={"50px"}
+                      src={ele.cartImage}
+                      bg={"#f5f6f6"}
+                    />
+                   <Box width={"40%"}>
+                    <Text align={"left"}>{ele.name}</Text>
+                    </Box>
+                    <Box mt={-2} alignItems="center" alignSelf={"center"}>
+                {Array(5)
+                  .fill("")
+                  .map((_, i) => (
+                    <StarIcon
+                      key={i}
+                      width={"13px"}
+                      color={i < ele.rating ? "#08ac0a" : "grey"}
+                    />
+                  ))}
+                <Box as="span" ml="2" color="black" fontSize="sm">
+                  ({121})
                 </Box>
-                      <Text align={"center"} fontWeight={"bold"} fontSize={"xs"}>${ele.price}</Text>
-                     
-                    </Flex>
-                    <Divider width={"90%"} color={"#7b7e7e"} height={"10px"} />
-                  </>
-                
-                ))}
-            
-              </Flex>
-            )}
-          </Flex>
+              </Box>
+                    <Text align={"center"} fontWeight={"bold"} fontSize={"xs"}>${ele.price}</Text>
+                   
+                  </Flex>
+                  <Divider width={"90%"} maxH={2} bg={"#7b7e7e"}margin={"auto"}/>
+                </>
+              
+              ))}
+          
+            </Flex>
+          )}
+        </Flex>
+          }
+
   
           <Stack
             flex={{ base: 1, md: 0 }}
@@ -324,7 +331,7 @@ import { shallowEqual, useSelector } from "react-redux";
   const DesktopNav = () => {
     const linkColor:string = "black";
     const linkHoverColor = "black";
-    const popoverContentBgColor = "black";
+    
   
     return (
       <Stack direction={"row"} spacing={4}>
@@ -357,10 +364,13 @@ import { shallowEqual, useSelector } from "react-redux";
                   rounded={"xl"}
                   width={"800px"}
                 >
-                  <Text fontSize={"3xl"} fontWeight={"700"} textAlign={"left"}>Popular Categories</Text>
+                  <Text fontSize={"2xl"} fontWeight={"700"} textAlign={"left"}>Popular Categories</Text>
                   <Divider mt={3} color={"#7b7e7e"} height={"2px"}/>
                   <SimpleGrid mt={7} columns={2} spacing={5} width={"100%"}>
-                    {navItem.children.map((child) => (
+                    {navItem.children.map((child,ind) => (
+                      ind ===4 ? <PathLink to={"/products"}><DesktopSubNav key={child.label} {...child} /></PathLink>:
+
+                      
                       <DesktopSubNav key={child.label} {...child} />
                     ))}
                   </SimpleGrid>
@@ -456,7 +466,10 @@ import { shallowEqual, useSelector } from "react-redux";
             align={"start"}
           >
             {children &&
-              children.map((child) => (
+              children.map((child,ind) => (
+                ind === 4 ?<PathLink to={"/products"}><Link key={child.label} py={2} href={"#"}>
+                {child.label}
+              </Link></PathLink>:
                 <Link key={child.label} py={2} href={"#"}>
                   {child.label}
                 </Link>

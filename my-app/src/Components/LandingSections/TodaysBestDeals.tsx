@@ -14,6 +14,10 @@ import {
   import { AiOutlineHeart } from "react-icons/ai";
   import { useEffect } from "react";
   
+  import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
   const buttonArr=[
     "Gadgets","Fashion","Toys","Education","Beauty","Fitness","Furniture","Sneakers"
   ]
@@ -148,6 +152,7 @@ import {
         >
           {productArray.map((ele,ind) => (
             <Flex
+            data-aos="slide-up" data-aos-duration="1000"
             key={ind}
               position={"relative"}
               direction={"column"}

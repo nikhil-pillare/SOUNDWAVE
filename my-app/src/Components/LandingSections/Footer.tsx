@@ -18,8 +18,12 @@ import {
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { disType } from "../../Redux/ProductReducer/action";
 import { Logout_Success } from "../../Redux/AuthReducer/apiType";
-;
   
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
   const Logo = (props: any) => {
     return (
       <svg
@@ -100,52 +104,52 @@ import { Logout_Success } from "../../Redux/AuthReducer/apiType";
           >
             <Stack spacing={6}>
               <Box>
-                <Image width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/>
+                <Image data-aos="slide-up" data-aos-duration="1000" width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/>
               </Box>
-              <Text fontSize={"sm"} textAlign={"left"}>
+              <Text data-aos="slide-up" data-aos-duration="1000"  fontSize={"sm"} textAlign={"left"}>
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consequat duis enim velit mollit.d
               </Text>
-              <Heading textAlign={"left"}>Accepted Payments</Heading>
+              <Heading data-aos="slide-up" data-aos-duration="1000" textAlign={"left"}>Accepted Payments</Heading>
               <SimpleGrid spacing={3} columns={{ base: 4, sm: 4, md: 4 }}>
-                <SocialButton label={"Twitter"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce8816711ebecac46d8_stripe.png" />
+                <SocialButton  label={"Twitter"} href={"#"}>
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce8816711ebecac46d8_stripe.png" />
                 </SocialButton>
                 <SocialButton label={"YouTube"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce82d440b7ab84a993f_visa.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce82d440b7ab84a993f_visa.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce8f032504012a5896b_Mastercard.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce8f032504012a5896b_Mastercard.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e48b497e6ce846b7ff_Amazon.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e48b497e6ce846b7ff_Amazon.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1f054e419e42aca4a9a2_Klarna.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1f054e419e42aca4a9a2_Klarna.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce7c4510cf9a55828a0_PayPal.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1ce7c4510cf9a55828a0_PayPal.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4707380264b25e680_ApplePay.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4707380264b25e680_ApplePay.png" />
                 </SocialButton>
                 <SocialButton label={"Instagram"} href={"#"}>
-                  <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1f55dc68c5ee83d0cbf8_GooglePay.png" />
+                  <Image data-aos="slide-up" data-aos-duration="1000" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb1f55dc68c5ee83d0cbf8_GooglePay.png" />
                 </SocialButton>
               </SimpleGrid>
               <Flex gap={2} direction={"column"} textAlign={"left"} justifyContent={"flex-start"}>
               {isAuth?
 <>
-                <Button onClick={handleClick} width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Logout</Button>
-            <PathLink to={"/login"}> <Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink> 
+                <Button data-aos="slide-up" data-aos-duration="1000" onClick={handleClick} width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Logout</Button>
+            <PathLink data-aos="slide-up" data-aos-duration="1000" to={"/login"}> <Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink> 
             </>
             :
               <>
 
-               <PathLink to={"/userlogin"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Login</Button></PathLink>
-              <PathLink to={"/signup"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Sign Up</Button></PathLink>
+               <PathLink data-aos="slide-up" data-aos-duration="1000" to={"/userlogin"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Login</Button></PathLink>
+              <PathLink data-aos="slide-up" data-aos-duration="1000" to={"/signup"} state={location.pathname} replace={true}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Sign Up</Button></PathLink>
             
-              <PathLink to={"/login"}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink>
+              <PathLink data-aos="slide-up" data-aos-duration="1000" to={"/login"}><Button width={"50%"} padding={6} rounded={"full"} color={"white"} backgroundColor={"#003d29"} _hover={{backgroundColor:"black"}}>Admin</Button></PathLink>
               </>
 
               }
@@ -155,49 +159,49 @@ import { Logout_Success } from "../../Redux/AuthReducer/apiType";
              
             </Stack>
             <Stack align={"flex-start"}>
-              <ListHeader>Department</ListHeader>
-              <Link href={"#"}>Fashion</Link>
-              <Link href={"#"}>Education product</Link>
-              <Link href={"#"}>Frozen Food</Link>
-              <Link href={"#"}>Beverages</Link>
-              <Link href={"#"}>Organic Grocery</Link>
-              <Link href={"#"}>Office Supplies</Link>
-              <Link href={"#"}>Books</Link>
-              <Link href={"#"}>Electronics & Gadget</Link>
-              <Link href={"#"}>Travel Accessories</Link>
-              <Link href={"#"}>Fitness</Link>
-              <Link href={"#"}>Sneakers</Link>
-              <Link href={"#"}>Toys</Link>
-              <Link href={"#"}>Furniture</Link>
+              <ListHeader data-aos="slide-up" data-aos-duration="1000">Department</ListHeader>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Fashion</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Education product</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Frozen Food</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Beverages</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Organic Grocery</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Office Supplies</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Books</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Electronics & Gadget</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Travel Accessories</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Fitness</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Sneakers</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Toys</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Furniture</Link>
             </Stack>
             <Stack align={"flex-start"}>
-              <ListHeader>About Us</ListHeader>
-              <Link href={"#"}>About SoundWave</Link>
-              <Link href={"#"}>Careers</Link>
-              <Link href={"#"}>News & Blog</Link>
-              <Link href={"#"}>Help</Link>
-              <Link href={"#"}>Press Center</Link>
-              <Link href={"#"}>Shop By Location</Link>
-              <Link href={"#"}>Shopcart Brands</Link>
-              <Link href={"#"}>Affiliate & Partners</Link>
-              <Link href={"#"}>Ideas & Guides</Link>
+              <ListHeader data-aos="slide-up" data-aos-duration="1000">About Us</ListHeader>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">About SoundWave</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Careers</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">News & Blog</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Help</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Press Center</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Shop By Location</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Shopcart Brands</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Affiliate & Partners</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Ideas & Guides</Link>
             </Stack>
             <Stack align={"flex-start"}>
-              <ListHeader>Services</ListHeader>
-              <Link href={"#"}>Gift Card</Link>
-              <Link href={"#"}>Mobile App</Link>
-              <Link href={"#"}>Shipping & delievery</Link>
-              <Link href={"#"}>Order Pick Up</Link>
-              <Link href={"#"}>Account Sign Up</Link>
+              <ListHeader data-aos="slide-up" data-aos-duration="1000">Services</ListHeader>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Gift Card</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Mobile App</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Shipping & delievery</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Order Pick Up</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Account Sign Up</Link>
             </Stack>
             <Stack align={"flex-start"}>
-              <ListHeader>Help</ListHeader>
-              <Link href={"#"}>SoundWave Help</Link>
-              <Link href={"#"}>Returns</Link>
-              <Link href={"#"}>Returns</Link>
-              <Link href={"#"}>Track Orders</Link>
-              <Link href={"#"}>Feedback</Link>
-              <Link href={"#"}>Security & Fraud</Link>
+              <ListHeader data-aos="slide-up" data-aos-duration="1000">Help</ListHeader>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">SoundWave Help</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Returns</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Returns</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Track Orders</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Feedback</Link>
+              <Link href={"#"} data-aos="slide-up" data-aos-duration="1000">Security & Fraud</Link>
             </Stack>
           </SimpleGrid>
         </Container>

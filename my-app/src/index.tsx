@@ -32,6 +32,14 @@ const customTheme = extendTheme({
         },
       },
     },
+    Radio: {
+      // Update the styles for the radio input
+      baseStyle: {
+        control: {
+          borderColor: "black",
+        },
+      },
+    },
   },
 });
 // console.log(store.getState())

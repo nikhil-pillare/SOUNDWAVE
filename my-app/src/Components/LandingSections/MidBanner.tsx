@@ -8,11 +8,14 @@ import {
     Container,
     Box
   } from "@chakra-ui/react";
-
+  import AOS from 'aos';
+  import 'aos/dist/aos.css'; // You can also use <link> for styles
+  // ..
+  AOS.init();
 
   export default function MidBanner() {
     return (
-        <Box maxWidth={"11xl"}>
+        <Box maxWidth={"11xl"} data-aos="slide-up" data-aos-duration="1000">
       <Flex
         h={"100vh"}
         backgroundImage={

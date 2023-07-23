@@ -17,6 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const arr = [
     {
@@ -52,7 +56,7 @@ export default function Discount() {
       </Heading>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={7}>
         {arr.map((ele)=>(
-              <Flex direction={"column"} >
+              <Flex direction={"column"} data-aos="zoom-in">
               <Flex
               borderTopEndRadius={"10px"}
               borderTopLeftRadius={"10px"}

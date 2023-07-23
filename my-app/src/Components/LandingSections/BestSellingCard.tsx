@@ -14,9 +14,14 @@ import {
   import { FaCircle } from "react-icons/fa";
   import { AiOutlineTag } from "react-icons/ai";
 
+  import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
   export default function BestSellingCard({image,label,icon}:{image:string,label:string,icon:string}) {
     return (
-      <Center py={6}>
+      <Center py={6} data-aos="slide-up" data-aos-duration="1000">
         <Box
           maxW={"300px"}
           w={"full"}
