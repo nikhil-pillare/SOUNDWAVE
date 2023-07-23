@@ -1,4 +1,4 @@
-import { Box, Image, Flex, Heading,Badge, SimpleGrid, Button ,Icon} from "@chakra-ui/react";
+import { Box, Image, Flex, Heading,Badge, SimpleGrid, Button ,Icon, Text} from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import {AiOutlineHeart} from "react-icons/ai"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -204,22 +204,28 @@ export default function BestDeals(){
                 height={"300px"}
               />
               </Flex>
-              <Box p="6">
+              <Box mt={4}>
                 <Flex
                   alignItems="baseline"
                   flexDirection={"row"}
                   justifyContent={"space-between"}
+                  width={"100%"}
                 >
                   <Box
                     color="black"
                     fontWeight="bold"
                     letterSpacing="wide"
                     fontSize="lg"
-                    ml="2"
+                    justifySelf={"flex-start"}
+                    textAlign={"left"}
                   >
                     {ele.title}
                   </Box>
-                  <Box>{ele.formattedPrice}</Box>
+                  <Flex>
+                    <Text color={"black"} fontWeight={"bold"} fontSize={"sm"}>$</Text>
+                  <Box color="black"  fontWeight="bold" fontSize={"lg"}>{ele.formattedPrice}</Box>
+                  <Text color={"black"}fontWeight={"bold"} fontSize={"sm"}>.00</Text>
+                  </Flex>
                 </Flex>
                 <Box
                   mt="1"
