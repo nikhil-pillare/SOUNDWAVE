@@ -2,3 +2,4 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const SET_TOTAL_AMOUNT = 'SET_TOTAL_AMOUNT';
 export const CHANAGE_QUANTITY = 'CHANAGE_QUANTITY';
+export const GET_PRODUCT = 'GET_PRODUCT';

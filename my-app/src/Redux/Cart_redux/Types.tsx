@@ -1,8 +1,8 @@
 export interface Cart_item{
     id:number,
-    imageUrl:string,
+    cartImage:string,
     price:number,
-    currency:string,
+    currency?:string,
     name:string,
     description:string,
     quantity:number

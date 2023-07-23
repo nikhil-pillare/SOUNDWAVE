@@ -2,7 +2,7 @@ import { HStack, StackProps, Text, TextProps, useColorModeValue as mode } from '
 import { ReactNode } from 'react'
 
 interface PriceTagProps {
-  currency: string
+  currency?: string
   price: number
   salePrice?: number
   rootProps?: StackProps
