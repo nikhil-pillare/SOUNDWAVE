@@ -11,31 +11,39 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_TOTAL_AMOUNT } from '../../Redux/actions_types'
 import { Cart_item, Cart_state } from '../../Redux/Cart_redux/Types'
-import { store } from '../../Redux/store'
+import { RootState, store } from '../../Redux/store'
 //import { store } from '../Redux/store'
 import { CartItem } from '../../Components/Cart/CartItem'
 import { CartOrderSummary } from './CartOrderSummary'
+import {Link as PathLink} from 'react-router-dom'
+
 
 
 
   function MainPage(){
-    const products: readonly Cart_item[] = useSelector((store : Cart_state)=>store.cart)
-    const amount : number = useSelector((store:Cart_state)=>store.total_amount)
+    //const products:[] = []
+    const products :Cart_item[] = useSelector((store:any)=>store.cartReducer.cart)
+    const amount : number = useSelector((store:any)=>store.cartReducer.total_amount)   
+
     const dispatch = useDispatch()
+   
     useEffect(()=>{
+
       dispatch({type:SET_TOTAL_AMOUNT})
-    },[])
-    console.log(products,amount);
-    ////////QUANTITY HANDLER/////////////
     
-    /////////////////////
+    },[])
+
+    
+    /////////// RYRYRYRY /\ WRRWRWR /////////////
     return(
-        <Box
+      <Box
         maxW={{ base: '3xl', lg: '7xl' }}
         mx="auto"
         px={{ base: '4', md: '8', lg: '12' }}
         py={{ base: '6', md: '8', lg: '12' }}
-      >
+    >
+     
+
         <Stack
           direction={{ base: 'column', lg: 'row' }}
           align={{ lg: 'flex-start' }}
@@ -57,10 +65,17 @@ import { CartOrderSummary } from './CartOrderSummary'
             <CartOrderSummary />
             <HStack mt="6" fontWeight="semibold">
               <p>or</p>
+              <PathLink to='/'>
               <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
+              </PathLink>
             </HStack>
           </Flex>
+
         </Stack>
+ 
+  
+      
+  
       </Box>
     )
   }

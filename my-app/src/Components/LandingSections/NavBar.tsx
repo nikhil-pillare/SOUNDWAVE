@@ -301,9 +301,11 @@ import { shallowEqual, useSelector } from "react-redux";
             <Flex alignItems={"center"} gap={3}>
             <AiOutlineShoppingCart/>
             <Link _hover={{textDecoration:"none"}} className="hover-underline-animation">
+            <PathLink to='/cart'>
             <Text>
               Cart
             </Text>
+            </PathLink>
             </Link>
             
            
