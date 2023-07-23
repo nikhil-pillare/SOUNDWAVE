@@ -50,4 +50,4 @@ export const adduser=(newUser:user)=>(dispatch:disType)=>{
     })  
  }
 
- export{}
+ 
