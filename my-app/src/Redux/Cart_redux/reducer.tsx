@@ -48,6 +48,8 @@ export const reducer = (state:Cart_state = inti,action:Cart_actions)=>{
       return {...state,cart:updated}
     }
     case SET_TOTAL_AMOUNT:{
+      console.log('In total count');
+      
       let total=0
       for(let i=0;i<state.cart.length;i++){
         total = total + state.cart[i]['price']*state.cart[i]['quantity']

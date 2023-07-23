@@ -1,45 +1,26 @@
-//import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Container, Divider, Flex, FormControl, FormLabel, Grid, GridItem, Heading, HStack, Input, InputGroup, InputRightElement, Select, SimpleGrid, Text, VStack } from "@chakra-ui/react"
+
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Container, Divider, Flex, FormControl, FormLabel, Grid, GridItem, Heading, HStack, Input, InputGroup, InputRightElement, Select, SimpleGrid, Text, VStack } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { SET_TOTAL_AMOUNT } from "../../Redux/actions_types"
 import { Cart_state } from "../../Redux/Cart_redux/Types"
-import { RootState, store } from "../../Redux/store"
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Container,
-  Divider,
-  Flex, // Import Flex from Chakra UI correctly
-  FormControl,
-  FormLabel,
-  Grid,
-  GridItem,
-  Heading,
-  HStack,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Select,
-  SimpleGrid,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { store } from "../../Redux/store"
 
-
-//import { Flex,Grid } from '@chakra-ui/react'
 function Payment() {
-  const amount: number = useSelector((store: RootState) => store.cartReducer.total_amount)
+  //const amount: number = useSelector((store: any) => store.cartReducer.total_amount)
+  const amount : number = useSelector((store:any)=>store.cartReducer.total_amount)
+
+
   const [showOTP, setShowOTP] = useState(false); // State to control the OTP pop-up window
   const [otp, setOTP] = useState(["", "", "", ""]);
   const dispatch = useDispatch()
   const cancelRef = useRef<HTMLInputElement | null>(null);
   const [ispay,setpay] = useState(false)
+
+  const [showPaymentSuccess, setShowPaymentSuccess] = useState(false); 
+
+
  // const inputRefs = Array.from({ length: 4 }, () => useRef<HTMLInputElement | null>(null));
   useEffect(() => {
 
@@ -55,6 +36,9 @@ function Payment() {
         // For now, we'll simply close the OTP pop-up window
         setShowOTP(false);
         setpay(true)
+
+        handlePaymentSuccessClose()
+
       };
       const handleInputChange = (index: number, value: string) => {
         // Handle changes for each input digit
@@ -65,11 +49,46 @@ function Payment() {
         
       }
 
-  console.log(amount);
+      function handlePaymentSuccessClose(){
+        setShowPaymentSuccess(true);
+        // Add any additional logic if needed
+      };
+      const generateOrderId = () => {
+        return Math.floor(Math.random() * 1000000);
+      };
+    
+      const orderId = generateOrderId();
 
-  if(ispay){
-    return <Navigate to='/' />
+  //console.log(amount);
+
+  if (showPaymentSuccess) {
+    return (
+      <AlertDialog isOpen={true} leastDestructiveRef={cancelRef} onClose={handlePaymentSuccessClose}>
+        <AlertDialogOverlay />
+        <AlertDialogContent>
+          <AlertDialogHeader>Payment Successful!</AlertDialogHeader>
+          <AlertDialogBody>
+            Thank you for your payment. Your order has been successfully placed.
+            {/* You can also show the order ID here if needed */}
+            <Text fontSize="xl" fontWeight="bold">
+            Order ID: {orderId}
+          </Text>
+          </AlertDialogBody>
+          <AlertDialogFooter>
+          <Button as={Link} to="/" colorScheme="blue">
+            Back to Home
+          </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    );
   }
+
+  // Rest of your code remains unchanged...
+
+
+
+
 
   return (
     <Flex h='100vh' py={20} bg='linear-gradient(to bottom, #F8FAFC, #E2E8F0)'>
@@ -194,7 +213,9 @@ function Payment() {
         </Grid>
       </Container>
     </Flex>
-  )
+
+  );
+
 }
 
 export default Payment;

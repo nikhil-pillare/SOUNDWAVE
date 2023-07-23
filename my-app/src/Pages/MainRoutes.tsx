@@ -6,6 +6,8 @@ import { AdminSide } from "./Admin/Adminside";
 import Login from "./Login/Login";
 import SignUpForm from "./SignUp/SignUp";
 import { SingleProductPage } from "./Product/SingleProductPage";
+import MainPage from "./Cart/MainPage";
+import Payment from "./Payment/Payment";
 
 export default function MainRoutes(){
     return (
@@ -17,6 +19,8 @@ export default function MainRoutes(){
    <Route path="/userlogin" element={<Login/>}/>
    <Route path="/signup" element={<SignUpForm/>}/>
    <Route path="/products/:id" element={<SingleProductPage/>}></Route>
+   <Route path="/cart" element={<MainPage/>}></Route>
+   <Route path="/payment" element={<Payment/>}></Route>
     </Routes>
     )
 }
