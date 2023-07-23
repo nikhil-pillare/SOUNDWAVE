@@ -12,9 +12,11 @@ export const ProductList = () => {
   const productData = useSelector((store: any) => store.productReducer.products);
   let [searchParams] = useSearchParams();
   let brand = searchParams.get("brand");
-  let category = searchParams.get("category");
+  let types = searchParams.get("types");
+  let noise = searchParams.get("noise");
+
   const [page, setPage] = useState<number>(() => {
-    // Get the page value from localStorage on component mount
+   
     const savedPage = localStorage.getItem("currentPage");
     return savedPage ? Number(savedPage) : 1;
   });
@@ -25,15 +27,16 @@ export const ProductList = () => {
       params: {
         _page: page,
         _limit: 8,
-        category,
+        types,
         brand,
+        noise
       },
     };
-    window.scrollTo(0, 0);
+   
     dispatch<any>(getData(param));
   }, [searchParams, page]);
 
-  // Save the current page value to localStorage whenever it changes
+ 
   useEffect(() => {
     localStorage.setItem("currentPage", String(page));
   }, [page]);
