@@ -8,10 +8,14 @@ import {
     Button
   } from "@chakra-ui/react";
 
+  import AOS from 'aos';
+  import 'aos/dist/aos.css'; // You can also use <link> for styles
+  // ..
+  AOS.init();
 
 export default function HelpYouShop(){
     return (
-        <Box py={12} p={4} width={"90%"} margin={"auto"}>
+        <Box py={12} p={4} width={"90%"} margin={"auto"} data-aos="slide-up" data-aos-duration="1000">
       <Heading color={"black"} as="h1" fontSize="3xl" textAlign={"left"} mb={"10"} mt={"20"}>
       Services To Help You Shop
       </Heading>
@@ -24,7 +28,7 @@ export default function HelpYouShop(){
                 padding={7}
                 direction={"column"}
                 justifyContent={"space-between"}
-                height={"200px"}
+                gap={6}
                 alignItems={"flex-start"}
                 textAlign={"left"}
                 bg={"#f5f6f6"}
@@ -53,7 +57,7 @@ export default function HelpYouShop(){
                 padding={7}
                 direction={"column"}
                 justifyContent={"space-between"}
-                height={"200px"}
+                gap={6}
                 alignItems={"flex-start"}
                 textAlign={"left"}
                 bg={"#f5f6f6"}
@@ -82,7 +86,7 @@ export default function HelpYouShop(){
                 padding={7}
                 direction={"column"}
                 justifyContent={"space-between"}
-                height={"200px"}
+                gap={6}
                 alignItems={"flex-start"}
                 textAlign={"left"}
                 bg={"#f5f6f6"}

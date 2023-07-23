@@ -10,7 +10,10 @@ import {
 } from "@chakra-ui/react";
 
 
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 export default function TrendingProducts() {
   return (
@@ -20,7 +23,7 @@ export default function TrendingProducts() {
       </Heading>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 2 }} spacing={7}>
        
-              <Flex direction={"column"} >
+              <Flex direction={"column"} data-aos="slide-up" data-aos-duration="1000">
               <Box className="img-wrapper" width={"100%"}>
                 <Image
                 className="hover-zoom"
@@ -34,13 +37,14 @@ export default function TrendingProducts() {
                 padding={7}
                 direction={"column"}
                 justifyContent={"space-between"}
-                height={"200px"}
+               
                 alignItems={"flex-start"}
                 textAlign={"left"}
                 bg={"#f5f6f6"}
+                gap={2}
                 >
               
-                <Text mb={-10} color={"black"} fontSize={"2xl"} fontWeight={"extrabold"}>Furniture Village</Text>
+                <Text  color={"black"} fontSize={"2xl"} fontWeight={"extrabold"}>Furniture Village</Text>
                 
                   
                   <Text color={"black"} fontSize={"1xl"} fontWeight={"medium"}>{"Delivery with in 24 hours"}</Text>
@@ -52,14 +56,14 @@ export default function TrendingProducts() {
                   _hover={{ bg: "#003d29", border:"1px solid #003d29" }}
                   padding={6}
                   textAlign={"center"}
-                  mt={-5}
+                  
                 >
                   Shop Now
                 </Button>
               </Flex>
               
             </Flex>
-            <Flex direction={"column"} >
+            <Flex direction={"column"} data-aos="slide-up" data-aos-duration="1000" >
               <Box width={"100%"} className="img-wrapper">
                 <Image
                 className="hover-zoom"
@@ -73,13 +77,14 @@ export default function TrendingProducts() {
                 padding={7}
                 direction={"column"}
                 justifyContent={"space-between"}
-                height={"200px"}
+                
                 alignItems={"flex-start"}
                 textAlign={"left"}
                 bg={"#f5f6f6"}
+                gap={2}
                 >
               
-                <Text mb={-10} color={"black"} fontSize={"2xl"} fontWeight={"extrabold"}>Furniture Village</Text>
+                <Text mb={0} color={"black"} fontSize={"2xl"} fontWeight={"extrabold"}>Furniture Village</Text>
                 
                   
                   <Text color={"black"} fontSize={"1xl"} fontWeight={"medium"}>{"Delivery with in 24 hours"}</Text>
@@ -91,7 +96,7 @@ export default function TrendingProducts() {
                   _hover={{ bg: "#003d29", border:"1px solid #003d29" }}
                   padding={6}
                   textAlign={"center"}
-                  mt={-5}
+                  mt={0}
                 >
                   Shop Now
                 </Button>

@@ -1,4 +1,4 @@
-import { Box, Image, Flex, Heading,Badge, SimpleGrid, Button ,Icon, Text} from "@chakra-ui/react";
+import { Box, Image, Flex, Heading,Badge, SimpleGrid, Button ,Icon, Text, Skeleton} from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import {AiOutlineHeart} from "react-icons/ai"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,6 +7,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination'
+import { useEffect, useState } from "react";
 
 
 
@@ -97,9 +98,15 @@ const productArray = [
 
 export default function BestDeals(){
 
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // Simulate data loading delay (you can replace this with your actual data fetching logic)
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Simulate a 2-second loading delay
+  }, []);
 
-  
   
   const breakpoints = {
     640: {
@@ -130,6 +137,7 @@ export default function BestDeals(){
       <Heading color={"black"} as="h1" fontSize="3xl" textAlign={"left"} mb={"10"} mt={"20"}>
           Our Weekly Popular Products
         </Heading>
+      
         
         <Swiper
          breakpoints={breakpoints}
@@ -159,10 +167,11 @@ export default function BestDeals(){
           columns={{ base: 1, sm: 2, md: 8 }}
           spacing={5}
           justifyContent={"space-evenly"}
+          bg={"white"}
         >
         {productArray.map((ele,ind) => (
           <SwiperSlide>
-             <Flex
+            <Flex
              mt={5}
             key={ind}
               position={"relative"}
@@ -266,6 +275,7 @@ export default function BestDeals(){
                 </Box>
               </Box>
             </Flex>
+             
            </SwiperSlide>
           ))}
               

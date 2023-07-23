@@ -12,7 +12,21 @@ import { Clear_Error, Login_Failure, Login_Request, Login_Success } from "../../
 import { error } from "console";
 export default function Login(){
 
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleLoginClick = () => {
+    // Set isLoading to true when the button is clicked to simulate loading state
+    setIsLoading(true);
+
+    // Simulate an asynchronous action, like fetching data or making an API call
+    setTimeout(() => {
+      // After the asynchronous action is complete, set isLoading back to false
+      setIsLoading(false);
+    }, 2000); // Simulate a 2-second loading delay
+  };
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
     const [email,setEmail]=useState("")
     const [pass,setPass]=useState("")
     const [show, setShow] = useState(false)
@@ -94,11 +108,13 @@ export default function Login(){
         }
     
     const handleSubmit=()=>{
-       
+      
+
         if(!email||!pass){
             setValid(true)
         }
         else{
+          handleLoginClick()
           getReq(email,pass)
         }
         handleReset()
@@ -148,7 +164,7 @@ export default function Login(){
               <ChakraLink color="#003d29">Not a User? Sign Up Here</ChakraLink>
               </Link>
             </Stack>
-            <Button _hover={{backgroundColor:"black"}} backgroundColor={"#003d29"} borderRadius={"20px"} color={"white"} size={'md'} fontSize={'xs'} fontWeight={"bold"}  border={"2px solid #003d29"}  onClick={handleSubmit}>
+            <Button isLoading={isLoading} _hover={{backgroundColor:"black"}} backgroundColor={"#003d29"} borderRadius={"20px"} color={"white"} size={'md'} fontSize={'xs'} fontWeight={"bold"}  border={"2px solid #003d29"}  onClick={handleSubmit}>
               Login
             </Button>
           </Stack>

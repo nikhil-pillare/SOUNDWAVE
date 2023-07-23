@@ -15,6 +15,7 @@ import { Box, Divider } from "@chakra-ui/react";
 import Footer from "../../Components/LandingSections/Footer";
 
 import WeeklyPopular from "../../Components/LandingSections/WeeklyPopular";
+import { useEffect, useState } from "react";
 
 
 export default function Landing(){

@@ -6,7 +6,7 @@ import {
     FormLabel,useToast,Switch,
     Modal,
     ModalOverlay,
-    ModalContent,Box
+    ModalContent,Box, Button
   } from "@chakra-ui/react";
   import {
     Flex,
@@ -17,7 +17,7 @@ import {
   } from '@chakra-ui/react';
   
   import axios from 'axios'
-  import { useState } from "react";
+  import { useEffect, useState } from "react";
   import {useLocation, useNavigate} from 'react-router-dom'
   
   import * as yup from "yup";
@@ -57,6 +57,21 @@ import { Signup_Success } from "../../Redux/AuthReducer/apiType";
   });
   
   function SignUpForm() {
+    const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    // Set isLoading to true when the button is clicked to simulate loading state
+    setIsLoading(true);
+
+    // Simulate an asynchronous action, like fetching data or making an API call
+    setTimeout(() => {
+      // After the asynchronous action is complete, set isLoading back to false
+      setIsLoading(false);
+    }, 2000); // Simulate a 2-second loading delay
+  };
+    useEffect(()=>{
+      window.scrollTo(0, 0);
+    },[])
     const [details, setDetails] = useState({
       firstName: "",
       lastName: "",
@@ -106,12 +121,13 @@ import { Signup_Success } from "../../Redux/AuthReducer/apiType";
   
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-  
+
       schema
         .validate(details, { abortEarly: false })
         .then(() => {
           // Validation passed, do something here like submitting the form
           // console.log("Form submitted successfully");
+          handleClick()
           setSubmitStatus(true)
           setgeneratedOTP(generateOTP())
         })
@@ -351,17 +367,13 @@ import { Signup_Success } from "../../Redux/AuthReducer/apiType";
       </FormControl>
                   
                 </Stack>
-                <Input 
+                <Button 
                 type="submit" value="Submit"
                   fontFamily={'heading'}
-                  mt={8}
+                  
                   w={'full'}
-                  bgGradient="linear(to-r, #01d5a1, #053d4c)"
-                  color={'white'}
-                  _hover={{
-                    bgGradient: 'linear(to-r, #01d5a1, #053d4c)',
-                    boxShadow: 'xl',
-                  }}/>
+                  isLoading={isLoading} _hover={{backgroundColor:"black"}} backgroundColor={"#003d29"} borderRadius={"20px"} color={"white"} size={'md'} fontSize={'md'} fontWeight={"bold"}  border={"2px solid #003d29"}
+                 >Sign Up</Button>
                   
               </Box>
           
