@@ -190,7 +190,7 @@ import { shallowEqual, useSelector } from "react-redux";
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} alignItems={"center"}>
 
-           <Image display={{ base: "none", md: "flex" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/>
+          <PathLink to={"/"}><Image display={{ base: "none", md: "flex" }} width={"90px"} height={"35px"} src="https://res.cloudinary.com/dsixdct6o/image/upload/v1689975917/soundWave_2_rhhzwj.png"/></PathLink> 
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
             </Flex>

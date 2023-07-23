@@ -6,7 +6,8 @@ import {
     Badge,
     SimpleGrid,
     Button,
-    Icon
+    Icon,
+    Text
   } from "@chakra-ui/react";
   
   import { StarIcon } from "@chakra-ui/icons";
@@ -188,22 +189,28 @@ import {
               />
               </Flex>
   
-              <Box p="6">
+              <Box mt={4}>
                 <Flex
                   alignItems="baseline"
                   flexDirection={"row"}
                   justifyContent={"space-between"}
+                  textAlign={"left"}
+                  width={"100%"}
                 >
                   <Box
                     color="black"
                     fontWeight="bold"
                     letterSpacing="wide"
                     fontSize="lg"
-                    ml="2"
+                    justifySelf={"flex-start"}
                   >
                     {ele.title}
                   </Box>
-                  <Box>{ele.formattedPrice}</Box>
+                  <Flex>
+                    <Text color={"black"} fontWeight={"bold"} fontSize={"sm"}>$</Text>
+                  <Box color="black"  fontWeight="bold" fontSize={"lg"}>{ele.formattedPrice}</Box>
+                  <Text color={"black"}fontWeight={"bold"} fontSize={"sm"}>.00</Text>
+                  </Flex>
                 </Flex>
                 <Box
                   mt="1"
