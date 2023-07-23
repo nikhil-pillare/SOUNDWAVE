@@ -5,7 +5,7 @@ import { Cart_state } from "./Cart_redux/Types";
 // import { Cart_actions, Cart_state, DispatchType, Target } from "./Cart_redux/Types";
 import { reducer as productReducer } from "./ProductReducer/reducer";
 import { product } from "./ProductReducer/reducer";
-import {Auth_State, reducer as authreducer} from './AuthReducer/reducer'
+import {Auth_State, reducer as authReducer} from './AuthReducer/reducer'
 //let middlewear = [thunk]
 
 

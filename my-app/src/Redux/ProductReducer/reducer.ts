@@ -26,8 +26,8 @@ export interface singleProduct {
   
   // Define the action interface with specific action types
   export interface act {
-    type: "REQUEST" | "GET_SUCCESS" | "FAILED";
-    payload?: singleProduct[]; // Adjust this to match the payload type of each action
+    type: string,
+    payload?: any; // Adjust this to match the payload type of each action
   }
   
   // reducer
