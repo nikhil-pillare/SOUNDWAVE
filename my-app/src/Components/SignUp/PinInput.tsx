@@ -28,13 +28,14 @@ export default function OTP({generatedOTP,handleOTPVerification,misMatch}:any){
 
   return(
     <>
-    <Box bg={"white"} mb={2}>
+    <Box bg={"black"} color={"white"} mb={2}>
       <Text align="center">Your OTP is: {generatedOTP}</Text>
     </Box>
 <HStack>
   <PinInput otp mask>
   {pinValues.map((value, index) => (
     <PinInputField
+    
       key={`${index}-${value}`}
       value={value}
       onChange={(e) => handlePinChange(e.target.value, index)}
