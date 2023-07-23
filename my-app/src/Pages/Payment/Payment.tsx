@@ -1,3 +1,4 @@
+
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Container, Divider, Flex, FormControl, FormLabel, Grid, GridItem, Heading, HStack, Input, InputGroup, InputRightElement, Select, SimpleGrid, Text, VStack } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -9,12 +10,17 @@ import { store } from "../../Redux/store"
 function Payment() {
   //const amount: number = useSelector((store: any) => store.cartReducer.total_amount)
   const amount : number = useSelector((store:any)=>store.cartReducer.total_amount)
+
+
   const [showOTP, setShowOTP] = useState(false); // State to control the OTP pop-up window
   const [otp, setOTP] = useState(["", "", "", ""]);
   const dispatch = useDispatch()
   const cancelRef = useRef<HTMLInputElement | null>(null);
   const [ispay,setpay] = useState(false)
+
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false); 
+
+
  // const inputRefs = Array.from({ length: 4 }, () => useRef<HTMLInputElement | null>(null));
   useEffect(() => {
 
@@ -30,7 +36,9 @@ function Payment() {
         // For now, we'll simply close the OTP pop-up window
         setShowOTP(false);
         setpay(true)
+
         handlePaymentSuccessClose()
+
       };
       const handleInputChange = (index: number, value: string) => {
         // Handle changes for each input digit
@@ -40,6 +48,7 @@ function Payment() {
         setOTP(newOTP);
         
       }
+
       function handlePaymentSuccessClose(){
         setShowPaymentSuccess(true);
         // Add any additional logic if needed
@@ -76,6 +85,7 @@ function Payment() {
   }
 
   // Rest of your code remains unchanged...
+
 
 
 
@@ -203,7 +213,9 @@ function Payment() {
         </Grid>
       </Container>
     </Flex>
+
   );
+
 }
 
 export default Payment;
