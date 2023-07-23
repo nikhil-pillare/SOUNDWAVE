@@ -15,22 +15,24 @@ import { store } from '../../Redux/store'
 //import { store } from '../Redux/store'
 import { CartItem } from '../../Components/Cart/CartItem'
 import { CartOrderSummary } from './CartOrderSummary'
+import {Link as PathLink} from 'react-router-dom'
 
 
 
   function MainPage(){
-    const products: readonly Cart_item[] = useSelector((store : Cart_state)=>store.cart)
-    const amount : number = useSelector((store:Cart_state)=>store.total_amount)
+    //const products:[] = []
+    const products :Cart_item[] = useSelector((store:any)=>store.cartReducer.cart)
+    const amount : number = useSelector((store:any)=>store.cartReducer.total_amount)
     const dispatch = useDispatch()
     useEffect(()=>{
       dispatch({type:SET_TOTAL_AMOUNT})
     },[])
-    console.log(products,amount);
+    console.log(amount);
     ////////QUANTITY HANDLER/////////////
     
     /////////////////////
     return(
-        <Box
+      <Box
         maxW={{ base: '3xl', lg: '7xl' }}
         mx="auto"
         px={{ base: '4', md: '8', lg: '12' }}
@@ -57,7 +59,9 @@ import { CartOrderSummary } from './CartOrderSummary'
             <CartOrderSummary />
             <HStack mt="6" fontWeight="semibold">
               <p>or</p>
+              <PathLink to='/'>
               <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
+              </PathLink>
             </HStack>
           </Flex>
         </Stack>
