@@ -10,6 +10,7 @@ let middlewear = [thunk]
 const Rootreducer = combineReducers({
 productReducer,cartReducer,authReducer
 })
+//corrected
 // export const store :Store<Cart_state,Cart_actions> & {dispatch : DispatchType} 
 // = legacy_createStore(Rootreducer,applyMiddleware(...middlewear))
 
