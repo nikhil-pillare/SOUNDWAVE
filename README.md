@@ -59,4 +59,4 @@ Feedback and Ratings: Users should have the option to provide feedback and ratin
 
 User profile functionalities: Users can create and manage their profiles, including personal information, order history, and payment details.
 
-I hope to incoroporate these features in future.
+We hope to incoroporate these features in future.
