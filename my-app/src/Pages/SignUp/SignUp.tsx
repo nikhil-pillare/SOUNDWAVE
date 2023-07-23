@@ -382,6 +382,8 @@ import { Signup_Success } from "../../Redux/AuthReducer/apiType";
             flexDirection:'column',
             padding:"20px",
             justifyContent: 'center',
+            backgroundColor:"black",
+            color:"white",
             alignItems:'center', height:"200px", width:"300px"}}>
           <Box >
           <OTP
