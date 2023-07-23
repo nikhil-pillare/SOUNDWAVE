@@ -9,7 +9,7 @@ SoundWave sells a variety of audio devices (headphones, earphones and pods). Use
 ## 🔗 Links
 
 This Website is live and deployed on Netlify.
-By visiting the provided Netlify link, users can directly access and explore the HealthConnect website.
+By visiting the provided Netlify link, users can directly access and explore the SoundWave website.
 
 [![netflify](https://img.shields.io/badge/netflify-blue?style=for-the-badge&logo=netflify&logoColor=white)](https://katherineoelsner.com/)
 
