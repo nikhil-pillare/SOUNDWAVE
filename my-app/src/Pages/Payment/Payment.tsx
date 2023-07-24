@@ -149,7 +149,10 @@ function Payment() {
               </GridItem>
             </SimpleGrid>
 
-            <Button color='white' bg='blue.500' size='lg' w='full' onClick={() => setShowOTP(true)}>
+            <Button color='white' bg='blue.500' size='lg' w='full' onClick={() => {
+              setShowOTP(true)
+              alert('Your OTP is 5-6-1-8')
+            }}>
               Place Order
             </Button>
           </VStack>
@@ -165,7 +168,7 @@ function Payment() {
 
             <HStack justify='space-between' w='full'>
               <Text>Taxes</Text>
-              <Text>{30} ₹</Text>
+              <Text>$ {30} </Text>
             </HStack>
 
             <Divider w='full' />
