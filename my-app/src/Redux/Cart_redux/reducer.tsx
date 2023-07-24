@@ -15,7 +15,7 @@ export const reducer = (state:Cart_state = inti,action:Cart_actions)=>{
     }
 
     case ADD_TO_CART:{
-      axios.post(`https://nippy-flavour-backend.bhishree18.repl.co/cart/`,action.item)
+      axios.post(`https://nippy-flavour-backend.bhishree18.repl.co/cart`,action.item)
       .then((res)=>{
         
       })

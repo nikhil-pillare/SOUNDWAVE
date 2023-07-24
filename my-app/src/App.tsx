@@ -25,7 +25,7 @@ function App() {
     <div className="App" style={{backgroundColor:"white"}}>
       <NavBar/>
       <MainRoutes/>
-      <PaymentForm onSubmit={handlePaymentSubmit}/>
+   
     </div>
   );
 }

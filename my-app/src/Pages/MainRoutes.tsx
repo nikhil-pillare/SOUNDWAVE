@@ -7,8 +7,10 @@ import Login from "./Login/Login";
 import SignUpForm from "./SignUp/SignUp";
 import { SingleProductPage } from "./Product/SingleProductPage";
 import MainPage from "./Cart/MainPage";
-import Payment from "./Payment/Payment";
+
 import CartPageTemplate from "../Components/CartPageTemplate";
+import Payment from "./Payment/Payment";
+
 
 export default function MainRoutes(){
     return (
@@ -22,7 +24,7 @@ export default function MainRoutes(){
    <Route path="/products/:id" element={<SingleProductPage/>}></Route>
    <Route path="/cart" element={<MainPage/>}></Route>
    <Route path="/payment" element={<Payment/>}></Route>
-   <Route path="/cart2" element={<CartPageTemplate/>}/>
+   
     </Routes>
     )
 }
