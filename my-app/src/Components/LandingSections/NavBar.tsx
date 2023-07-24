@@ -236,7 +236,8 @@ import { shallowEqual, useSelector } from "react-redux";
               
             >
               {data.map((ele:APIobj, ind) => (
-                <>
+                
+                <PathLink to={`/products/${ele.id}`}>
                   <Flex
                     key={ind}
                     width={"100%"}
@@ -274,7 +275,7 @@ import { shallowEqual, useSelector } from "react-redux";
                    
                   </Flex>
                   <Divider width={"90%"} maxH={2} bg={"#7b7e7e"}margin={"auto"}/>
-                </>
+                </PathLink>
               
               ))}
           
