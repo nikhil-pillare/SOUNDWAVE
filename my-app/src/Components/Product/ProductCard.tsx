@@ -1,6 +1,9 @@
 import react, { useState } from "react"
 import { singleProduct } from "../../Redux/ProductReducer/reducer";
 import styled from "@emotion/styled";
+import { useEffect } from "react";
+import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {
    Alert,
@@ -20,9 +23,45 @@ import { AiOutlineHeart } from "react-icons/ai";
 export const ProductCard=({id,name,cartImage,description,price,rating,brand}:singleProduct)=>{
 const navigate=useNavigate();
 // const [alert,setAlert]=useState<Boolean>(false);
-function alertt(){
-  alert("product added")
-}
+
+const toast=useToast()
+const [quantity, setQuantity] = useState(1);
+
+const [data,setData]=useState<singleProduct>({id:0,name:"",price:"",description:"",colors:[],cartImage: "",
+rating: 0,brand:""});
+console.log(data)
+useEffect(()=>{
+axios.get(`https://nippy-flavour-backend.bhishree18.repl.co/products/${id}`).then((res)=>{
+setData(res.data);
+})
+
+},[])
+
+function addToCart(){
+const selectedColorName= data?.colors[0].name
+  const selectedColorUrl =  data?.cartImage;
+  const dat = { quantity, ...data, cartImage: selectedColorUrl,color: selectedColorName, SelectedColorId: 1  };
+  axios.post(`https://nippy-flavour-backend.bhishree18.repl.co/cart`, dat).then((res) => {
+    console.log(res.data);
+    toast({
+      title: "Product added.",
+      description: "The product has been added to your cart.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  }).catch((err) => {
+    console.log(err);
+    toast({
+      title: "Product is already added.",
+      description: "The product is already in your cart.",
+      status: "warning",
+      duration: 3000,
+      isClosable: true,
+    });
+  });
+  
+  }
 function nav(){
    navigate(`/products/${id}`);
 }
@@ -135,7 +174,7 @@ function nav(){
           padding={5}
           ml={2}
           textAlign={"center"}
-          onClick={()=>alertt()}
+          onClick={addToCart}
         >Add To Cart</Button>
          </Box>
        </Box>
@@ -144,4 +183,5 @@ function nav(){
  </SimpleGrid>
    ) 
 }
+
 
