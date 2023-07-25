@@ -26,8 +26,21 @@ By visiting the provided Netlify link, users can directly access and explore the
 
 ![login page](https://res.cloudinary.com/dsixdct6o/image/upload/v1690152353/Screenshot_2023-07-24_at_04.15.24_ahvf7g.png)
 
+## Product Page
 
+![Product page](https://res.cloudinary.com/dsixdct6o/image/upload/v1690275246/Screenshot_2023-07-25_at_14.21.05_vmlvue.png)
 
+## Single Product Page
+
+![Single Product page](https://res.cloudinary.com/dsixdct6o/image/upload/v1690275245/Screenshot_2023-07-25_at_14.21.24_q54ffz.png)
+
+## Cart Page
+
+![Cart page](https://res.cloudinary.com/dsixdct6o/image/upload/v1690275246/Screenshot_2023-07-25_at_14.21.49_ahk4sd.png)
+
+## Payment Page
+
+![Payment page](https://res.cloudinary.com/dsixdct6o/image/upload/v1690275243/Screenshot_2023-07-25_at_14.22.19_uzm22q.png)
 
 # Features
 
