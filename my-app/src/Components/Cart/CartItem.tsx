@@ -1,18 +1,27 @@
-import { CloseButton, Flex, Link, Select, SelectProps, useColorModeValue } from '@chakra-ui/react'
+import { CloseButton, color, Flex, Link, Select, SelectProps, useColorModeValue } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { CHANAGE_QUANTITY, REMOVE_FROM_CART, SET_TOTAL_AMOUNT } from '../../Redux/actions_types'
 
 import { CartProductMeta } from '../../Pages/Cart/CartProductMeta'
 import { PriceTag } from '../../Pages/Cart/PriceTag'
-
+export interface colors {
+  id:number,
+  label:any,
+  name:string,
+  image:any
+}
 export type CartItemProps = {
   isGiftWrapping?: boolean
   name: string
+  
   description: string
   quantity: number
+  colors : colors[]
   price: number
   currency?: string
   cartImage: string
+  SelectedColorId : number
+ 
   onChangeQuantity?: (quantity: number) => void
   onClickGiftWrapping?: () => void
   onClickDelete?: () => void
@@ -37,14 +46,18 @@ const QuantitySelect = (props: SelectProps) => {
 
 export const CartItem = (props: CartItemProps) => {
   const {
-   
+  
     name,
     description,
     quantity,
     cartImage,
     price,
+    SelectedColorId,
+    colors
   
   } = props
+//console.log(colors[0].label,selectedColorId);
+console.log(props);
 
   const dispatch = useDispatch()
 
@@ -58,11 +71,27 @@ export const CartItem = (props: CartItemProps) => {
     dispatch({type:REMOVE_FROM_CART , item:props})
     dispatch({type:SET_TOTAL_AMOUNT})
   }
+ 
+  let image = ''
+  //if(colors[selectedColorId].label){
+    //lable = colors[selectedColorId].label
+  //}
+  //if(colors[selectedColorId].image){
+    //image = colors[selectedColorId].image
+  //}
+  let lable = colors.filter((item)=>{
+    if(item.image===cartImage){
+      return true
+    }
+    else{
+      return false
+    }
+  })
   return (
     <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
       <CartProductMeta
         name={name}
-        description={description}
+        description={lable[0].label}
         image={cartImage}
 
       />

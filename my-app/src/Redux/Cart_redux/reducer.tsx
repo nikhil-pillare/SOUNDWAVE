@@ -15,7 +15,7 @@ export const reducer = (state:Cart_state = inti,action:Cart_actions)=>{
     }
 
     case ADD_TO_CART:{
-      axios.post(`https://nippy-flavour-backend.bhishree18.repl.co/cart`,action.item)
+      axios.post(`https://nippy-flavour-backend.bhishree18.repl.co/cart/`,action.item)
       .then((res)=>{
         
       })
@@ -41,8 +41,8 @@ export const reducer = (state:Cart_state = inti,action:Cart_actions)=>{
       if(state.cart.length>0){
         
         for(let i=0;i<state.cart.length;i++){
-          //console.log(state.cart[i]['price'],state.cart[i]['quantity'])
-          total = total + state.cart[i]['price']*state.cart[i]['quantity']
+          //console.log(state.cart[i]['price'],state.cart[i].quantity)
+          total = total + state.cart[i]['price']*(state.cart[i]['quantity']?state.cart[i]['quantity']:1)
         }
       }
       

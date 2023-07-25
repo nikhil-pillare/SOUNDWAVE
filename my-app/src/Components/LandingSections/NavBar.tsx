@@ -235,8 +235,8 @@ import { shallowEqual, useSelector } from "react-redux";
               borderRadius={"5px"}
               
             >
+              
               {data.map((ele:APIobj, ind) => (
-                
                 <PathLink to={`/products/${ele.id}`}>
                   <Flex
                     key={ind}

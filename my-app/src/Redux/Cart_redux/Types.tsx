@@ -1,3 +1,5 @@
+import { colors } from "../../Components/Cart/CartItem"
+
 export interface Cart_item{
     id:number,
     cartImage:string,
@@ -5,7 +7,9 @@ export interface Cart_item{
     currency?:string,
     name:string,
     description:string,
-    quantity:number
+    quantity:number,
+    colors:colors[],
+    SelectedColorId:number
 
 }
 export interface Target{

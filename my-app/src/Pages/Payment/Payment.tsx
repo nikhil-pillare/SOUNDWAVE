@@ -176,7 +176,7 @@ function Payment() {
             <HStack justify='space-between' w='full'>
               <Text fontWeight='bold' fontSize='xl'>Total Amount to Pay</Text>
               <Text fontWeight='bold' fontSize='2xl' color='blue.500'>
-                {`$${amount.toFixed(2)}`}
+                {`$${(amount+30).toFixed(2)}`}
               </Text>
             </HStack>
             <AlertDialog leastDestructiveRef={cancelRef} isOpen={showOTP} onClose={() => setShowOTP(false)}>
