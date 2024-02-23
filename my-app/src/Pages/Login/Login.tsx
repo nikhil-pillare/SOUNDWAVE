@@ -64,7 +64,7 @@ export default function Login(){
 
     const getReq=(email:string,pass:string)=>{
         dispatch({ type: Login_Request })
-        axios.get('https://nippy-flavour-backend.bhishree18.repl.co/users').then((res)=>{
+        axios.get('https://jsonservertesting.onrender.com/users').then((res)=>{
           let flag=false
             res.data.forEach((ele:user)=>{
                 if(email===ele.email && pass===ele.password){

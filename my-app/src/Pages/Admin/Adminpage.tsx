@@ -11,7 +11,7 @@ const AdminPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://nippy-flavour-backend.bhishree18.repl.co/users', {
+      const response = await fetch('https://jsonservertesting.onrender.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

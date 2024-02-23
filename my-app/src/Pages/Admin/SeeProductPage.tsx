@@ -16,7 +16,7 @@ const SeeProductPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://nippy-flavour-backend.bhishree18.repl.co/products');
+        const response = await fetch('https://jsonservertesting.onrender.com/products');
         const data = await response.json();
 
         if (response.ok) {

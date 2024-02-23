@@ -19,7 +19,7 @@ export function Remove_from_cart(item:Cart_item){
 }
 export function Get_produts(){
     return (dispatch:DispatchType)=>{
-        axios.get(`https://nippy-flavour-backend.bhishree18.repl.co/cart`)
+        axios.get(`https://jsonservertesting.onrender.com/cart`)
         .then((res)=>{
 
             console.log(res);
